@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ReadMovementInput()
     {
+        // Checking if there is a keyboard
         if (Keyboard.current == null)
         {
             return;
@@ -60,23 +61,26 @@ public class PlayerMovement : MonoBehaviour
             y = 1f;
         }
 
-        // TODO: Add an if statement that checks whether the player
-        // is holding S or the Down Arrow.
-        // Set the vertical movement direction to move down.
+        // Check whether the player is holding S or the Down Arrow
+        if(Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
+        {
+            // Set the vertical movement direction to move down.
+            y = -1f;
+        }
 
+        // Check whether the player is holding A or the Left Arrow
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+        {
+            // Set the vertical movement direction to move left.
+            x = -1f;
+        }
 
-
-        // TODO: Add an if statement that checks whether the player
-        // is holding A or the Left Arrow.
-        // Set the horizontal movement direction to move left.
-
-
-
-        // TODO: Add an if statement that checks whether the player
-        // is holding D or the Right Arrow.
-        // Set the horizontal movement direction to move right.
-
-
+        // Check whether the player is holding D or the Right Arrow
+        if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        {
+            // Set the vertical movement direction to move up.
+            x = 1f;
+        }
 
         // Combine the horizontal and vertical values into one movement direction.
         moveInput = new Vector2(x, y);
