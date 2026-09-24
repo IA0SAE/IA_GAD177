@@ -191,15 +191,20 @@ public class PlayerHealth : MonoBehaviour
         // TODO: Give healAmount a random value between
         // minimumDebugHeal and maximumDebugHeal.
         // Include both the minimum and maximum values.
-        int healAmount = 0;
+
+        int minDebugHeal = 1;
+        int maxDebugHeal = 11;
+            
+        int healAmount = Random.Range (minDebugHeal, maxDebugHeal);
 
 
 
         // TODO: Print the randomly generated healing amount to the Console.
 
 
-
         Heal(healAmount);
+
+        Debug.Log("Random Int:" +  healAmount);
     }
 
     public void TakeDamage(int amount)
