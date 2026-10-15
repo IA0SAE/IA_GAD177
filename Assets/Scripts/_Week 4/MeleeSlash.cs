@@ -14,13 +14,16 @@ public class MeleeSlash : MonoBehaviour
 
     private void Awake()
     {
-        // TODO: Get the Collider2D component from this GameObject.
-        Collider2D col = null;
+        // Gets component
+        Collider2D col = GetComponent<Collider2D>();
 
-        // TODO: Check that col is not null.
-        // If it exists, set it to be a trigger.
+        // Checks if col is not null, then sets a trigger if true
 
-
+        if (col != null)
+        {
+            col.isTrigger = true;
+        }
+     
     }
 
     private void Start()
@@ -31,24 +34,29 @@ public class MeleeSlash : MonoBehaviour
 
     public void Initialize(int damageAmount)
     {
-        // TODO: Set damage to the damageAmount passed into this function.
+        // DMG
 
-
+        damage = damageAmount;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // TODO: Try to get the EnemyHealth component from the object that entered the trigger.
-        EnemyHealth enemy = null;
+        // Attempts to get enemy component
+        EnemyHealth enemy = other.gameObject.GetComponent<EnemyHealth>();
 
-        // TODO: Check that enemy is not null.
+        // Checks if its an enemy
         if (enemy != null)
         {
-            // TODO: Call the enemy's TakeDamage function and give it this slash's damage amount.
+            // Makes enemy takedamage
 
+            enemy.TakeDamage(damage);
 
-            // TODO: If debug logs are enabled, print the enemy hit and damage dealt.
+            // Debug.Log
 
+            if (showDebugLogs == true)
+            {
+                Debug.Log("Enemy took" + damage);
+            }
 
         }
     }
