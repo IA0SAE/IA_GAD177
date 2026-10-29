@@ -11,9 +11,7 @@ public class MainMenu : MonoBehaviour
     // Hook this function up to the Play UI Button.
     public void LoadScene()
     {
-        // TODO: Load the scene stored in firstSceneName.
-
-
+        SceneManager.LoadScene(firstSceneName);
     }
 
     // Hook this function up to the Quit UI Button.
